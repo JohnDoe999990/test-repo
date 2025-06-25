@@ -25,20 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Azure Login via OIDC
-        uses: Azure/login@v1
+        uses: Azure/login@v2.3.0
         with:
-          enable-oidc: true
           client-id: ${{ inputs.client-id }}
           tenant-id: ${{ inputs.tenant-id }}
-          subscription-id: ${{ inputs.subscription-id }}
-
-      - name: Fetch secrets from Key Vault
-        id: kv
-        uses: Azure/get-keyvault-secrets@v1
-        with:
-          keyvault: ibarulin-test-kv
-          secrets: |
-            test-key
-
-      - name: Test result
-        run: echo ${{ steps.kv.outputs.test-key }}
