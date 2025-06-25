@@ -41,4 +41,4 @@ jobs:
             test-key
 
       - name: Test result
-        run: ${{ steps.kv.outputs.test-key }}
+        run: echo ${{ steps.kv.outputs.test-key }}
