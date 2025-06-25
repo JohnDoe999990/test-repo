@@ -31,10 +31,14 @@ jobs:
           tenant-id: ${{ inputs.tenant-id }}
           allow-no-subscriptions: true
 
-
       - name: Fetch secrets from Key Vault
         id: kv
-        run: echo "MY_VALUE=asdf" >> "$GITHUB_OUTPUT"
+        uses: azure/cli@v2
+        with:
+          azcliversion: latest
+          inlineScript: |
+            VAULT="ibarulin-test-kv"
+            echo "MY_KEY=$(az keyvault secret show --vault-name $VAULT --name test-key --query value -o tsv)" >> $GITHUB_ENV
 
-      - name: Print output value
-        run: echo "${{ steps.kv.outputs.MY_VALUE }}"
+      - name: Print secrets
+        run: echo "${MY_KEY}"
