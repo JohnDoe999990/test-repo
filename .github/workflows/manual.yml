@@ -30,3 +30,11 @@ jobs:
           client-id: ${{ inputs.client-id }}
           tenant-id: ${{ inputs.tenant-id }}
           allow-no-subscriptions: true
+
+
+      - name: Fetch secrets from Key Vault
+        id: kv
+        run: echo "MY_VALUE=asdf" >> "$GITHUB_OUTPUT"
+
+      - name: Print output value
+        run: echo "${{ steps.kv.outputs.MY_VALLUE }}"
