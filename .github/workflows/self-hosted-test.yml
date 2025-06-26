@@ -1,0 +1,15 @@
+# .github/workflows/self-hosted-test.yml
+name: Self-Hosted Runner Test
+
+# Ручной запуск через кнопку Run workflow
+on: [workflow_dispatch]
+
+jobs:
+  test_self_hosted:
+    # Здесь мы указываем, что job должен пойти именно на self-hosted runner
+    runs-on: [self-hosted]
+
+    steps:
+
+      - name: Say hello
+        run: echo "✅ Hello from self-hosted runner!"
