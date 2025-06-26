@@ -11,10 +11,6 @@ on:
         description: "Azure tenant id"
         required: true
         type: string
-      subscription-id:
-        description: "Azure subscription id"
-        required: true
-        type: string
 
 permissions:
   id-token: write
